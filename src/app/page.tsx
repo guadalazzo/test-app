@@ -4,11 +4,11 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 const CURRENT_WEATHER =
   BASE_URL +
-  "/weather?lat=59.3349821&lon=18.0600743&appid=878e2b815fb928ccd4a58df5331904fa&units=metric";
+  `/weather?lat=59.3349821&lon=18.0600743&appid=${process.env.API_ID}&units=metric`;
 
 const FORECAST_WEATHER =
   BASE_URL +
-  "/forecast?lat=59.3349821&lon=18.0600743&appid=878e2b815fb928ccd4a58df5331904fa&units=metric";
+  `/forecast?lat=59.3349821&lon=18.0600743&appid=${process.env.API_ID}&units=metric`;
 
 export default async function Home() {
   async function getData() {
@@ -73,17 +73,17 @@ export default async function Home() {
       <h1 className="relative w-full flex-none mb-2 text-2xl font-semibold text-black">
         Weather App
       </h1>
-      <div className="max-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex-end">
-        <h2>TODAY</h2>
+      <div className="max-full max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mr-auto mb-2">
+        <h2 className="font-bold">TODAY</h2>
         <p className="text-lg">{weatherData?.name}</p>
-        <p className="text-lg">
+        <p className="text-xl">
           {weatherData?.main?.temp
             ? parseInt(weatherData?.main?.temp?.toString())
             : weatherData?.main?.temp?.toString()}
           °C
         </p>
         <p className="text-lg">
-          feels like:{" "}
+          <span className="text-sm">feels like: </span> <br></br>
           {weatherData?.main?.feels_like
             ? parseInt(weatherData?.main?.feels_like.toString())
             : weatherData?.main?.feels_like.toString()}
@@ -109,7 +109,7 @@ export default async function Home() {
                         °C
                       </p>
                       <p className="text-lg">
-                        <span className="text-sm">feels like: </span>
+                        <span className="text-sm">feels like: </span> <br></br>
                         {fore?.main?.feels_like
                           ? parseInt(fore?.main?.feels_like.toString())
                           : fore?.main?.feels_like.toString()}

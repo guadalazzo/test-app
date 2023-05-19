@@ -28,7 +28,7 @@ const MainContent = ({
               const dat = new Date(fore.dt * 1000);
               const hs = dat.getHours();
               return (
-                <div className="">
+                <div key={fore.dt} className="">
                   <span className="text-sm">{hs} hs</span>
                   <p className="text-xl">
                     {fore?.main?.temp

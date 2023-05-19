@@ -29,21 +29,24 @@ function CurrentForecast({
   appId: string;
 }) {
   const [weatherDataAux, setWeatherDataAux] = useState(weatherData);
-  const handleChange = useCallback(async (country: CountryData) => {
-    try {
-      const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${country.lat}&lon=${country.long}&appid=${appId}&units=metric`
-      );
-      const result = (await response.json()) as WeatherData;
-      setWeatherDataAux(result);
-      if (result.cod !== 200) {
-        throw new Error("not fetch");
+  const handleChange = useCallback(
+    async (country: CountryData) => {
+      try {
+        const response = await fetch(
+          `https://api.openweathermap.org/data/2.5/weather?lat=${country.lat}&lon=${country.long}&appid=${appId}&units=metric`
+        );
+        const result = (await response.json()) as WeatherData;
+        setWeatherDataAux(result);
+        if (result.cod !== 200) {
+          throw new Error("not fetch");
+        }
+        return result;
+      } catch (error) {
+        console.error(error);
       }
-      return result;
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+    },
+    [appId]
+  );
 
   return (
     <MyContextProvider>

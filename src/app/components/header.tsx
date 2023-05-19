@@ -5,7 +5,7 @@ import Link from "next/link";
 function Header() {
   return (
     <nav
-      className="relative flex w-full bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 md:flex-wrap md:justify-start mb-4"
+      className="relative flex w-full bg-white py-2 text-neutral-600 shadow-lg hover:text-neutral-700 focus:text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200 mb-4"
       data-te-navbar-ref
     >
       <div

@@ -6,16 +6,22 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 const CURRENT_WEATHER =
   BASE_URL +
-  `/weather?lat=59.3349821&lon=18.0600743&appid=${process.env.API_ID}&units=metric`;
+  `/weather?lat=59.3349821&lon=18.0600743&appid=${process?.env?.API_ID}&units=metric`;
 
 const COUNTRIES = "https://countriesnow.space/api/v0.1/countries/positions";
 
 export default async function Home() {
   async function getData() {
     try {
-      const response = await fetch(CURRENT_WEATHER);
-      const result = (await response.json()) as WeatherData;
-      return result;
+      if (process?.env?.API_ID) {
+        const response = await fetch(CURRENT_WEATHER);
+        const result = (await response.json()) as WeatherData;
+
+        if (result.cod !== 200) {
+          throw new Error("not fetch");
+        }
+        return result;
+      }
     } catch (error) {
       console.error(error);
     }
@@ -24,6 +30,7 @@ export default async function Home() {
     try {
       const response = await fetch(COUNTRIES);
       const result = (await response.json()) as ApiResponse;
+
       return result?.data;
     } catch (error) {
       console.error(error);

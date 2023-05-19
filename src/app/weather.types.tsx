@@ -132,3 +132,8 @@ export type groupedForecastInd = {
   };
   dt_txt: string;
 }[];
+
+export type forecastGroupArray = {
+  date: string;
+  forecast: groupedForecastInd;
+}[];

@@ -34,16 +34,16 @@ export default async function ExtendedForecast() {
       console.error(error);
     }
   }
-  const forecastData = await getForecast();
-  const countryData = await getCountries();
-
+  const forecastData = getForecast();
+  const countryData = getCountries();
+  const [forecast, country] = await Promise.all([forecastData, countryData]);
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 flex-mono">
+    <main className="flex min-h-screen flex-col items-center flex-mono">
       <Header />
-      {forecastData && countryData && process?.env?.API_ID ? (
+      {forecast && country && process?.env?.API_ID ? (
         <ExtendedForecastContent
-          forecastData={forecastData}
-          countryData={countryData}
+          forecastData={forecast}
+          countryData={country}
           appId={process?.env?.API_ID}
         />
       ) : null}

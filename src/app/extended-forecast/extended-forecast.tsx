@@ -1,4 +1,4 @@
-"use client";
+"use client"; // this is required as i'm using useState and context provider
 import React, { useState, useCallback } from "react";
 import Select from "../components/select";
 import { CountryData } from "../country.types";
@@ -15,7 +15,7 @@ const MainContent = ({
 }: {
   forecastData: forecastGroupArray;
 }) => (
-  <section className=" w-full bg-white shadow-md justify-start md:justify-center rounded-lg overflow-x-scroll mx-auto py-4 px-2  md:mx-12 mb-10">
+  <section className=" w-11/12 bg-white shadow-md justify-start md:justify-center rounded-lg overflow-x-scroll mx-auto py-4 px-2  md:mx-12 mb-10">
     {forecastData.map((day) => {
       return (
         <div

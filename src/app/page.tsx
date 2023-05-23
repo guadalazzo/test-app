@@ -37,16 +37,17 @@ export default async function Home() {
     }
   }
 
-  const weatherData = await getData();
-  const countryData = await getCountries();
+  const weatherData = getData();
+  const countryData = getCountries();
+  const [weather, country] = await Promise.all([weatherData, countryData]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 flex-mono">
+    <main className="flex min-h-screen flex-col items-center flex-mono">
       <Header />
-      {weatherData && countryData && process?.env?.API_ID ? (
+      {weather && country && process?.env?.API_ID ? (
         <CurrentForecast
-          weatherData={weatherData}
-          countryData={countryData}
+          weatherData={weather}
+          countryData={country}
           appId={process?.env?.API_ID}
         />
       ) : null}

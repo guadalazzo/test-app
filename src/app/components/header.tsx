@@ -9,7 +9,7 @@ function Header() {
       data-te-navbar-ref
     >
       <div
-        className="!visible hidden grow basis-[100%] items-center lg:!flex lg:basis-auto"
+        className=" grow basis-[100%] items-center lg:!flex lg:basis-auto"
         id="navbarSupportedContentX"
         data-te-collapse-item
       >

@@ -1,4 +1,5 @@
-"use client";
+"use client"; // this is required as i'm using useState and context provider
+
 import React, { useState, useCallback } from "react";
 import Card from "./components/card";
 import Select from "./components/select";

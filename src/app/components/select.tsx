@@ -23,8 +23,9 @@ function Select({
       <select
         value={country.name}
         onChange={handleChange}
-        className="mt-4 w-full p-1 m-5 rounded"
+        className="mt-4 w-11/12 p-1 m-5 rounded"
       >
+        <option selected={true}>Select a country</option>
         {countries.map((countryElem: CountryData) => {
           return (
             <option key={countryElem.iso2} value={countryElem.name}>

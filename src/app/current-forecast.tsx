@@ -1,25 +1,13 @@
+// REACT CLIENT COMPONENT
 "use client"; // this is required as i'm using useState and context provider
 
 import React, { useState, useCallback } from "react";
-import Card from "./components/card";
 import Select from "./components/select";
+import { CardWrapper } from "./components/card-wrapper";
 import { CountryData } from "./country.types";
 import { WeatherData } from "./weather.types";
 import { MyContextProvider } from "./MyContextProvider";
 
-const CardWrapper = ({ weatherData }: { weatherData: WeatherData }) => {
-  return (
-    <Card
-      cityName={weatherData?.name}
-      temp={weatherData?.main?.temp}
-      feelsLike={weatherData?.main?.feels_like}
-      min={weatherData?.main?.temp_min}
-      max={weatherData?.main?.temp_max}
-      humidity={weatherData?.main?.humidity}
-      weatherIcon={weatherData?.weather[0]?.icon}
-    />
-  );
-};
 function CurrentForecast({
   countryData,
   weatherData,
@@ -29,7 +17,10 @@ function CurrentForecast({
   weatherData: WeatherData;
   appId: string;
 }) {
+  // Will set initial data as default.
   const [weatherDataAux, setWeatherDataAux] = useState(weatherData);
+
+  /* On country selector change will get new data for the current weather on that country.*/
   const handleChange = useCallback(
     async (country: CountryData) => {
       try {

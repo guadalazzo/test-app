@@ -3,6 +3,10 @@
 
 [FORECAST APP](https://test-app-guadalazzo.vercel.app/)
 
+![Current forecast](/public/image1.png "Current forecast")
+
+![Extended forecast](/public/image2.png "Extended forecast")
+
 I've created this app was to test and explain React Server Components.
 
 ---
